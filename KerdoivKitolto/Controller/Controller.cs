@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KerdoivKitolto.DAO;
+using KerdoivKitolto.Model;
 
 namespace KerdoivKitolto.Controller
 {
-    class Controller
+    public class Controller
     {
         private readonly IDAO dao;
         public Controller(IDAO dao)
         {
             this.dao = dao;
         }
-        T Get<T>(int id)
+        public T Get<T>(int id)
         {
             return dao.Get<T>(id);
         }
-        List<T> GetList<T>(int id)
+        public List<Kerdoiv> GetList(int id)
         {
-            return dao.GetList<T>(id);
+            return dao.GetList(id);
         }
     }
 }

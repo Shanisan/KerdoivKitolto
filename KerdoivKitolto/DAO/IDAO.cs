@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KerdoivKitolto.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace KerdoivKitolto.DAO
     public interface IDAO
     {
         T Get<T>(int id);
-        List<T> GetList<T>(int id);
+        List<Kerdoiv> GetList(int id);
     }
 }
