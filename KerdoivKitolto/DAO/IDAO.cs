@@ -9,7 +9,10 @@ namespace KerdoivKitolto.DAO
 {
     public interface IDAO
     {
-        T Get<T>(int id);
+        int GetKerdoivIdByName(string nev);
         List<Kerdoiv> GetList(int id);
+        List<Kerdes> getKerdesek(int kerdoivID);
+        Dictionary<string, int> getValaszok(int kerdesID);
+        bool addKitoltes(string answers, string name, int kerdoivID);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using KerdoivKitolto.DAO;
 using KerdoivKitolto.Model;
 
-namespace KerdoivKitolto.Controller
+namespace KerdoivKitolto.ControllerNS
 {
     public class Controller
     {
@@ -15,13 +15,36 @@ namespace KerdoivKitolto.Controller
         {
             this.dao = dao;
         }
-        public T Get<T>(int id)
+        public int GetKerdoivIdByName(string nev)
         {
-            return dao.Get<T>(id);
+            return dao.GetKerdoivIdByName(nev);
         }
         public List<Kerdoiv> GetList(int id)
         {
             return dao.GetList(id);
+        }
+        public List<Kerdes> getKerdesek(int kerdoivID)
+        {
+            return dao.getKerdesek(kerdoivID);
+        }
+
+        public Dictionary<string, int> getValaszok(int kerdesID)
+        {
+            return dao.getValaszok(kerdesID);
+        }
+
+        internal bool addKitoltes(List<string> answers, string name, int kerdoivID)
+        {
+
+            string finalAnswer = "";
+            foreach (string s in answers)
+            {
+                finalAnswer += s;
+                finalAnswer += "|";
+            }
+            finalAnswer=finalAnswer.Remove(finalAnswer.Length - 1, 1);
+            Console.WriteLine(finalAnswer);
+            return dao.addKitoltes(finalAnswer, name, kerdoivID);
         }
     }
 }

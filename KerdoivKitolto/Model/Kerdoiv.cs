@@ -8,13 +8,13 @@ namespace KerdoivKitolto.Model
 {
     public class Kerdoiv
     {
-        private int id { get; set; }
-        private string nev { get; set; }
-        private DateTime kezdet { get; set; }
-        private DateTime vege { get; set; }
-        private int kitoltesiIdo { get; set; }
-        private int letrehozoID { get; set; }
-        private int kerdesekSzama { get; set; }
+        public int id { get; set; }
+        public string nev { get; set; }
+        public DateTime kezdet { get; set; }
+        public DateTime vege { get; set; }
+        public int kitoltesiIdo { get; set; }
+        public int letrehozoID { get; set; }
+        public int kerdesekSzama { get; set; }
 
         public Kerdoiv(int id, string nev, DateTime keztet, DateTime vege, int kitoltes, int letrehozo, int kerdesekSzama)
         {
@@ -29,7 +29,7 @@ namespace KerdoivKitolto.Model
 
         public override string ToString()
         {
-            return String.Format("id={0}, nev={1}, kezdet={2}, vege={3}, kitoltesiIdo={4}, letrehozoID={5}, kerdesekSzama={6}",
+            return "Kerdoiv: "+String.Format("id={0}, nev={1}, kezdet={2}, vege={3}, kitoltesiIdo={4}, letrehozoID={5}, kerdesekSzama={6}",
                 id, nev, kezdet, vege, kitoltesiIdo, letrehozoID, kerdesekSzama);
         }
 

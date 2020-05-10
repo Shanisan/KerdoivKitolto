@@ -93,12 +93,78 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="KerdesTipusok\DatumValaszto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KerdesTipusok\DatumValaszto.Designer.cs">
+      <DependentUpon>DatumValaszto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerdesTipusok\EgyszeresValaszto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KerdesTipusok\EgyszeresValaszto.Designer.cs">
+      <DependentUpon>EgyszeresValaszto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerdesTipusok\Feleletvalasztos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KerdesTipusok\Feleletvalasztos.Designer.cs">
+      <DependentUpon>Feleletvalasztos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerdesTipusok\KerdesTipusKozos.cs" />
+    <Compile Include="KerdesTipusok\SzamosKerdes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KerdesTipusok\SzamosKerdes.Designer.cs">
+      <DependentUpon>SzamosKerdes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerdesTipusok\SzovegesKerdes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KerdesTipusok\SzovegesKerdes.Designer.cs">
+      <DependentUpon>SzovegesKerdes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerdoivForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KerdoivForm.Designer.cs">
+      <DependentUpon>KerdoivForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerdoivLezaro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KerdoivLezaro.Designer.cs">
+      <DependentUpon>KerdoivLezaro.cs</DependentUpon>
+    </Compile>
     <Compile Include="KerdoivViewModel.cs" />
+    <Compile Include="Model\Kerdes.cs" />
     <Compile Include="Model\Kerdoiv.cs" />
+    <Compile Include="Model\Valasz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdesTipusok\DatumValaszto.resx">
+      <DependentUpon>DatumValaszto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdesTipusok\EgyszeresValaszto.resx">
+      <DependentUpon>EgyszeresValaszto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdesTipusok\Feleletvalasztos.resx">
+      <DependentUpon>Feleletvalasztos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdesTipusok\SzamosKerdes.resx">
+      <DependentUpon>SzamosKerdes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdesTipusok\SzovegesKerdes.resx">
+      <DependentUpon>SzovegesKerdes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdoivForm.resx">
+      <DependentUpon>KerdoivForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KerdoivLezaro.resx">
+      <DependentUpon>KerdoivLezaro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
