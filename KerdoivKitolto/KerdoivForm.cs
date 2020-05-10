@@ -22,12 +22,23 @@ namespace KerdoivKitolto
         Button ok = new Button();
         TextBox nev = new TextBox();
         KerdoivLezaro lezaro = new KerdoivLezaro();
+        int perc;
+        int masodperc;
+        int osszido;
+        string kerdoivNev;
+        string kitoltoNeve = "Anonymous";
 
-        public KerdoivForm(ControllerNS.Controller c, string kerdoivNev)
+        public KerdoivForm(ControllerNS.Controller c, string kerdoivNev, int timer, string kitoltoNeve)
         {
             this.c = c;
             this.kerdoivID = c.GetKerdoivIdByName(kerdoivNev);
-            Console.WriteLine(kerdoivID);
+            osszido = timer*60;
+            this.kerdoivNev = kerdoivNev;
+            if (kitoltoNeve != "")
+            {
+                this.kitoltoNeve = kitoltoNeve;
+            }
+            //Console.WriteLine(kerdoivID);
             if (kerdoivID == -1)
             {
                 MessageBox.Show("Hiba történt!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -35,15 +46,15 @@ namespace KerdoivKitolto
             }
             else
             {
-                this.Text = "Kérdőív: "+kerdoivNev;
-                InitializeComponent(); 
+                this.Text = "Kérdőív: " + kerdoivNev;
+                InitializeComponent();
                 flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
                 flowLayoutPanel2.WrapContents = false;
                 flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
                 flowLayoutPanel2.AutoScroll = true;
                 this.Show();
             }
-            
+
         }
 
         private void KerdoivForm_Load(object sender, EventArgs e)
@@ -57,7 +68,7 @@ namespace KerdoivKitolto
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.StartPosition = FormStartPosition.CenterScreen;
             int kerdesekSzama = 0;
-            foreach(Kerdes k in kerdesek)
+            foreach (Kerdes k in kerdesek)
             {
                 string imgpath = k.kep;
                 imgpath = imgpath.Replace('/', '\\');
@@ -95,55 +106,66 @@ namespace KerdoivKitolto
             l.Text = "Kérlek írd be a neved:";
             l.Width = 500;
             nev.Width = 500;*/
-
-            flowLayoutPanel2.Controls.Add(lezaro);
-            lezaro.button1.Click += new EventHandler(button1_Click);
+            Button b = new Button();
+            b.Text = "Kitöltés befejezése";
+            flowLayoutPanel2.Controls.Add(b);
+            b.Click += new EventHandler(button1_Click);
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            if (lezaro.textBox1.Text != "")
-            {
-                List<string> answers = new List<string>();
-                foreach (Control c in flowLayoutPanel2.Controls)
-                {
-                    if (c.Name.StartsWith("Kerdes"))
-                    {
-                        List<string> s = ((KerdesTipusKozos)c).getAnswers();
-                        if (s == null)
-                        {
-                            MessageBox.Show("Kérlek válaszolj minden kérdésre!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            answers.AddRange(s);
-                        }
-                    }
-                }
-                if(c.addKitoltes(answers, lezaro.textBox1.Text, kerdoivID))
-                {
-                    MessageBox.Show("Sikeresen kitöltötted a kérdőívet", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Hiba történt a kérés feldolgozása során", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                /*foreach(string st in answers)
-                {
-                    Console.WriteLine(st);
-                }*/
-            }
-            else
-            {
-                MessageBox.Show("Kérlek add meg a neved!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            bekuld();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void bekuld()
+        {
+            List<string> answers = new List<string>();
+            foreach (Control c in flowLayoutPanel2.Controls)
+            {
+                if (c.Name.StartsWith("Kerdes"))
+                {
+                    List<string> s = ((KerdesTipusKozos)c).getAnswers();
+                    if (s == null)
+                    {
+                        MessageBox.Show("Kérlek válaszolj minden kérdésre!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        answers.AddRange(s);
+                    }
+                }
+            }
+            if (c.addKitoltes(answers, kitoltoNeve, kerdoivID))
+            {
+                MessageBox.Show("Sikeresen kitöltötted a kérdőívet", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Hiba történt a kérés feldolgozása során", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            /*foreach(string st in answers)
+            {
+                Console.WriteLine(st);
+            }*/
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            osszido--;
+            perc = osszido / 60;
+            masodperc = osszido % 60;
+            this.Text = kerdoivNev+", megmaradt idő: "+perc+":"+masodperc;
+            if (osszido == 0)
+            {
+                MessageBox.Show("Lejárt az idő.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bekuld();
+            }
         }
     }
 }

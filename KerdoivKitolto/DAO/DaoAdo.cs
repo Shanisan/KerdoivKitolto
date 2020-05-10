@@ -21,14 +21,16 @@ namespace KerdoivKitolto.DAO
             {
                 conn.Open();
                 SQLiteTransaction transaction = conn.BeginTransaction();
-                command.CommandText = "INSERT INTO Kitoltes(kerdoivID, kitolto, valaszok) VALUES (@kerdoivID, @kitolto, @valaszok)";
+                command.CommandText = "INSERT INTO Kitoltes(kerdoivID, kitolto, valaszok, kitoltesIdeje) " +
+                    "VALUES (@kerdoivID, @kitolto, @valaszok, @kitoltesIdo)";
                 SQLiteParameter kerdoivParam = new SQLiteParameter("@kerdoivID", kerdoivID);
                 SQLiteParameter kitoltoParam = new SQLiteParameter("@kitolto", name);
                 SQLiteParameter valaszokParam = new SQLiteParameter("@valaszok", answers);
+                SQLiteParameter idoParameter = new SQLiteParameter("@kitoltesIdo", DateTime.Now);
                 command.Parameters.Add(kerdoivParam);
                 command.Parameters.Add(kitoltoParam);
                 command.Parameters.Add(valaszokParam);
-
+                command.Parameters.Add(idoParameter);
                 command.Prepare();
                 if (command.ExecuteNonQuery()==1)
                 {

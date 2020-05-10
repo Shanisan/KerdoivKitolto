@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using KerdoivKitolto.ControllerNS;
 using KerdoivKitolto.DAO;
 using KerdoivKitolto.Model;
@@ -19,6 +20,7 @@ namespace KerdoivKitolto
         public static KerdoivKitolto.ControllerNS.Controller cont = new KerdoivKitolto.ControllerNS.Controller(new DaoAdo());
 
         private string kerdoivNev = "";
+        private int kerdoivIdo = 0;
         public Form1()
         {
             InitializeComponent();
@@ -66,6 +68,8 @@ namespace KerdoivKitolto
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             kerdoivNev = (string) ((DataGridView)sender).SelectedRows[0].Cells["Név"].Value;
+            DataGridView dgv = (DataGridView)sender;
+            kerdoivIdo = Int32.Parse((string) dgv.SelectedRows[0].Cells["Kitöltési idő"].Value);
             //Console.WriteLine(kerdoivNev);
         }
 
@@ -77,7 +81,7 @@ namespace KerdoivKitolto
             }
             else
             {
-                KerdoivForm kf = new KerdoivForm(cont, kerdoivNev);
+                KerdoivForm kf = new KerdoivForm(cont, kerdoivNev, kerdoivIdo, textBox1.Text);
             }
         }
 
@@ -85,6 +89,11 @@ namespace KerdoivKitolto
         {
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
