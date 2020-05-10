@@ -56,9 +56,11 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(389, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(382, 432);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(382, 13);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // Feleletvalasztos
@@ -72,6 +74,7 @@
             this.Size = new System.Drawing.Size(774, 438);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

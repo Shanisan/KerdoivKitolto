@@ -45,14 +45,14 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(770, 426);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(862, 426);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // vScrollBar2
             // 
             this.vScrollBar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vScrollBar2.Location = new System.Drawing.Point(785, 12);
+            this.vScrollBar2.Location = new System.Drawing.Point(877, 12);
             this.vScrollBar2.Name = "vScrollBar2";
             this.vScrollBar2.Size = new System.Drawing.Size(12, 426);
             this.vScrollBar2.TabIndex = 1;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(892, 450);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.vScrollBar2);
             this.Controls.Add(this.flowLayoutPanel2);

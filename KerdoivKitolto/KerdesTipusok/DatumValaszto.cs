@@ -24,6 +24,11 @@ namespace KerdoivKitolto.KerdesTipusok
             {
                 pictureBox1.Image = Program.ResizeImage(new Bitmap(k.kep), new Size(762, 384));
             }
+            else
+            {
+                pictureBox1.Dispose();
+                this.AutoSize = true;
+            }
         }
 
         public List<string> getAnswers()

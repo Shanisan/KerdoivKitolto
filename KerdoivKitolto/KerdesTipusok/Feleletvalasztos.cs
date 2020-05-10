@@ -23,10 +23,16 @@ namespace KerdoivKitolto.KerdesTipusok
             InitializeComponent();
             kerdesID = kerdes.id;
             Dictionary<string, int> list = c.getValaszok(kerdes.id);
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             label1.Text = kerdes.szoveg;
             if (kerdes.kep != "")
             {
                 pictureBox1.Image = Program.ResizeImage(new Bitmap(kerdes.kep), new Size(762, 384));
+            }
+            else
+            {
+                pictureBox1.Dispose();
+                this.AutoSize = true;
             }
             if (list == null)
             {

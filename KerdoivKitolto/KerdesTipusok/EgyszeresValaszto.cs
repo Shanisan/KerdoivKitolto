@@ -28,6 +28,11 @@ namespace KerdoivKitolto.KerdesTipusok
             {
                 pictureBox1.Image = Program.ResizeImage(new Bitmap(kerdes.kep), new Size(762, 384));
             }
+            else
+            {
+                pictureBox1.Dispose();
+                this.AutoSize = true;
+            }
             if (list == null)
             {
                 flowLayoutPanel1.Dispose();
@@ -58,6 +63,11 @@ namespace KerdoivKitolto.KerdesTipusok
                 }
             }
             return result;
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
